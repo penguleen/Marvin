@@ -83,6 +83,14 @@ def generate_launch_description():
     )
     ld.add_action(elbow_joint_node)
 
+    wrist_joint_node = Node(
+        package='marvin',
+        executable='wristJoint',
+        output='screen',
+        emulate_tty=True
+    )
+    ld.add_action(wrist_joint_node)
+
     joint_state_publisher_node = Node(
         package='marvin',
         executable='jointStatePublisher',

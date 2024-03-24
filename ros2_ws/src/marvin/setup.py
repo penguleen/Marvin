@@ -31,6 +31,7 @@ setup(
             'shoulderAdduction = marvin.shoulderAdduction:main',
             'shoulderFlexion = marvin.shoulderFlexion:main',
             'elbowJoint = marvin.elbowJoint:main',
+            'wristJoint = marvin.wristJoint:main',
             'jointStatePublisher = marvin.jointStatePublisher:main',
             'displayJointStates = marvin.displayJointStates:main',
         ],

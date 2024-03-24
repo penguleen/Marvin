@@ -35,12 +35,20 @@ class JointStatePublisher(Node):
             self.handle_elbow_joint,
             10)
         
+        self.wrist_subscription = self.create_subscription(
+            Float64,
+            'wrist',
+            self.handle_wrist_joint,
+            10)
+        
         self.joint_state_publisher = self.create_publisher(JointState, 'joint_states', 10)
         
         # Use a dictionary to keep track of the latest joint angles
         self.joint_angles = {'left_shoulder_flexion': 0.0, 
                              'left_shoulder_adduction': 0.0, 
-                             'elbow': 0.0}
+                             'elbow': 0.0,
+                             'wrist': 0.0
+                             }
 
     def handle_left_shoulder_flexion(self, msg):
         self.joint_angles['left_shoulder_flexion'] = msg.data
@@ -54,15 +62,22 @@ class JointStatePublisher(Node):
         self.joint_angles['elbow'] = msg.data
         self.publish_joint_state()
 
+    def handle_wrist_joint(self, msg):
+        self.joint_angles['wrist'] = msg.data
+        self.publish_joint_state()
+
     def publish_joint_state(self):
         joint_state_msg = JointState()
         joint_state_msg.header = Header()
         joint_state_msg.header.stamp = self.get_clock().now().to_msg()
         joint_state_msg.name = ['joint1','joint2','joint3','joint4','gripper','gripper_sub']
-        joint_state_msg.position = [self.joint_angles['left_shoulder_flexion'], 
-                                    -self.joint_angles['left_shoulder_adduction'] + np.pi/2, 
-                                    self.joint_angles['elbow'] + np.pi/2, 
-                                    0.0,0.0,0.0]
+        joint_state_msg.position = [
+                                    # self.joint_angles['left_shoulder_flexion'], 
+                                    # -self.joint_angles['left_shoulder_adduction'] + np.pi/2, 
+                                    # self.joint_angles['elbow'] + np.pi/2, 
+                                    0.0,0.0,0.0,
+                                    self.joint_angles['wrist'] + np.pi/2,
+                                    0.0,0.0]
         joint_state_msg.velocity = []  # Leave empty if not used
         joint_state_msg.effort = []  # Leave empty if not used
 

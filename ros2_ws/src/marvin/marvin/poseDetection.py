@@ -74,7 +74,7 @@ class PoseDetectionPublisher(Node):
                 
                 point = Point(x=landmark.x, y=landmark.y, z=landmark.z)
                 pose_landmark_msg.point.append(point)
-
+        # print(pose_landmark_msg)
         self.publisher_.publish(pose_landmark_msg)
 
 def main(args=None):
