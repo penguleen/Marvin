@@ -28,15 +28,18 @@ class WristAngleSubscriber(Node):
         right_elbow_idx = labels.index('right_elbow')
         left_wrist_idx = labels.index('left_wrist')
         right_wrist_idx = labels.index('right_wrist')
+        left_shoulder_idx = labels.index('left_shoulder')
+        right_shoulder_idx = labels.index('right_shoulder')
 
         # Calculate vectors for arms
         left_forearm = vector_from_points(points[left_wrist_idx], points[left_elbow_idx])
         right_forearm = vector_from_points(points[right_wrist_idx], points[right_elbow_idx])
         left_wrist_arm = vector_from_points(points[left_index_idx], points[left_wrist_idx])
         right_wrist_arm = vector_from_points(points[right_index_idx], points[right_wrist_idx])
+        shoulder_to_shoulder = vector_from_points(points[left_shoulder_idx], points[right_shoulder_idx])
 
         # project vector
-        projected_left_wrist_arm = project_vector_onto_plane(left_wrist_arm, left_forearm)
+        projected_left_wrist_arm = project_vector_onto_plane(left_wrist_arm, shoulder_to_shoulder)
 
         # Calculate angles
         left_wrist_angle = calculate_angle(left_wrist_arm, left_forearm)

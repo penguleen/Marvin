@@ -29,7 +29,7 @@ class ShoulderAdductionNode(Node):
         projected_upper_arm = project_vector_onto_plane(upper_arm, shoulder_to_shoulder)
         projeted_shoulder_to_hip = project_vector_onto_plane(shoulder_to_hip, shoulder_to_shoulder)
 
-        adduction_angle = calculate_angle(upper_arm, projeted_shoulder_to_hip)
+        adduction_angle = calculate_angle(upper_arm, shoulder_to_shoulder)
 
         adduction_msg = Float64()
         adduction_msg.data = adduction_angle

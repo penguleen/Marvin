@@ -30,7 +30,7 @@ class ShoulderFlexionNode(Node):
             'shoulder_to_hip': project_vector_onto_plane(shoulder_to_hip, shoulder_to_shoulder)
         }
 
-        flexion_angle = calculate_angle(projected['upper_arm'], projected['shoulder_to_hip'])
+        flexion_angle = calculate_angle(upper_arm, shoulder_to_hip)
         # if calculate_angle(np.cross(projected['upper_arm'], projected['shoulder_to_hip']), shoulder_to_shoulder) > np.pi/2:
         #     flexion_angle = -flexion_angle
 

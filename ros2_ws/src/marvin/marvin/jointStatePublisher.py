@@ -72,12 +72,11 @@ class JointStatePublisher(Node):
         joint_state_msg.header.stamp = self.get_clock().now().to_msg()
         joint_state_msg.name = ['joint1','joint2','joint3','joint4','gripper','gripper_sub']
         joint_state_msg.position = [
-                                    # self.joint_angles['left_shoulder_flexion'], 
-                                    # -self.joint_angles['left_shoulder_adduction'] + np.pi/2, 
-                                    # self.joint_angles['elbow'] + np.pi/2, 
-                                    0.0,0.0,0.0,
-                                    self.joint_angles['wrist'] + np.pi/2,
-                                    0.0,0.0]
+                                    self.joint_angles['left_shoulder_flexion'], 
+                                    -self.joint_angles['left_shoulder_adduction'] + np.pi/2, 
+                                    self.joint_angles['elbow'] + np.pi/2, 
+                                    # self.joint_angles['wrist'] + np.pi/2,
+                                    0.0,0.0,0.0]
         joint_state_msg.velocity = []  # Leave empty if not used
         joint_state_msg.effort = []  # Leave empty if not used
 
