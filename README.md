@@ -57,6 +57,12 @@ Ensure ROS 2 and the necessary dependencies are installed on your system.
    ```bash
    ros2 launch marvin full.launch.py
    ```
+if using ubuntu, remember to make your serial port executable:
+```bash
+   ls -l <portname>*
+   sudo chmod a+rw <portname>
+   ```
+   
 This command launches the pose detection node, the shoulder angle joint node, and RViz for visualization.
 
 **Pose Detection**: Stand in front of the camera to have your pose detected. The system captures video frames, detects human pose landmarks, and visualizes them in RViz.
