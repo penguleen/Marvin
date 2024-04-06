@@ -27,7 +27,7 @@ Ensure ROS 2 and the necessary dependencies are installed on your system.
 1. Clone this repository to your local machine:
 
    ```bash
-   git clone https://github.com/GitJaehoCho/Marvin.git
+   git clone https://github.com/lauweiquan/Marvin.git
    ```
 
 2. Install the required Python libraries:
