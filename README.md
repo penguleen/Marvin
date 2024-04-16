@@ -42,6 +42,7 @@ Ensure ROS 2 and the necessary dependencies are installed on your system.
 
    ```bash
    cd ros2_ws/
+   . ~/ros2_humble/install/local_setup.bash
    colcon build
    ```
 

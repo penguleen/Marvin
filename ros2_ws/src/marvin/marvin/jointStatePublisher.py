@@ -4,6 +4,7 @@ from rclpy.node import Node
 from std_msgs.msg import Float64
 from sensor_msgs.msg import JointState
 from std_msgs.msg import Header
+from .motor_integration import dynamixel_motor
 
 class JointStatePublisher(Node):
 
@@ -82,6 +83,7 @@ class JointStatePublisher(Node):
 
         # Publish the JointState message
         self.joint_state_publisher.publish(joint_state_msg)
+        dynamixel_motor((int(self.joint_angles['left_shoulder_flexion']))*6, (int(self.joint_angles['left_shoulder_adduction']*6 + np.pi/2)), (int(np.pi - self.joint_angles['elbow']))*6)
 
 def main(args=None):
     rclpy.init(args=args)
